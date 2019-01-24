@@ -1,0 +1,41 @@
+import random
+lines=open("bigwords.txt").read().splitlines()
+
+def hangman():
+    w=random.choice(lines)
+    w=w.lower()
+    I=0
+    B=[]
+    A=[]
+    e=0
+    G=[]
+    for letter in w:
+        if letter=='-':
+            B+='-'
+        else:
+            B+='_'
+            A+=letter
+    print(B)
+    while e<12:
+        guess=input()
+        if len(guess)>1:
+            continue
+        elif guess not in G:
+            for x in A:
+                if x==guess:
+                    B[I]=guess
+                I+=1
+            I=0
+            G+=guess
+            if A==B:
+                return(w,e,'WIN')
+            if guess in A:
+                print(B)
+                print(G)
+            else:
+                e+=1
+                print('no',e)
+                print(G)
+    return(w,'LOSE')
+
+print(hangman())
