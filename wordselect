@@ -1,0 +1,10 @@
+## this requires a file I got from https://github.com/dwyl/english-words/blob/master/words.txt
+w=open("bigwords.txt","a")
+r=open("words.txt","r")
+
+for words in r:
+    if len(words)>4:
+        w.write(str(words))
+        
+w.close
+## this filters out all words with 5 or more letters as any less wouldnt make a good game of hangman.
